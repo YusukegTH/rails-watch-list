@@ -1,0 +1,20 @@
+.list-card {
+  width: 100%;
+  padding: 2rem 0;
+  background-color: $black;
+  height: 6rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 1rem rgba(0, 0, 255, .2);
+}
+
+.list-card-name {
+  text-decoration: none;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.list-card:hover {
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}

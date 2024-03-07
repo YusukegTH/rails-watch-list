@@ -1,0 +1,35 @@
+<div class="container my-3 mx-auto d-flex flex-column align-items-center">  <h3>My watchlists</h3>
+  <div class="row w-100 d-flex justify-content-center">
+    <% @lists.each do |list| %>
+      <div class="col-4 p-3 text-center">
+          <div class="list-card">
+            <%= link_to list_path(list), :class => "list-card-name" do%>
+              <p class=""> <%= list.name %> </p>
+            <%end%>
+          </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+
+<div class="container my-3 mx-auto d-flex flex-column align-items-center">
+  <h3>Movies</h3>
+  <div class="row w-100 d-flex align-items-center">
+    <% @movies.each do |movie| %>
+      <div class="col-3 p-3">
+        <div class="movie-card">
+          <img class="movie-card-image" src="<%= movie["poster_url"] %>" alt="Poster of <%= movie["title"] %>">
+          <div class="movie-card-info">
+            <div class="movie-card-title">
+              <p><%= movie["title"] %></p>
+            </div>
+            <div class="movie-card-overview">
+              <p><%= movie["overview"][0, 120] %>...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

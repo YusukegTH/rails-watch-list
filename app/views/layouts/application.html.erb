@@ -11,6 +11,12 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-light rounded ">
+    <div class="nav_button">
+      <%= link_to "My watchlists", lists_path %>
+      <%= link_to "New list", new_list_path %>
+    </div>
+  </nav>
     <%= yield %>
   </body>
 </html>

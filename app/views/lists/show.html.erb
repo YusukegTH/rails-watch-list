@@ -1,0 +1,31 @@
+<div class="container my-3 mx-auto d-flex flex-column align-items-center">
+  <h3> <%= @list.name %> </h3>
+  <div class="row w-100 d-flex align-items-center">
+    <% @list.movies.each do |movie| %>
+      <div class="col-3 p-3">
+        <div class="movie-card">
+          <img class="movie-card-image" src="<%= movie["poster_url"] %>" alt="Poster of <%= movie["title"] %>">
+          <div class="movie-card-info">
+            <div class="movie-card-title">
+              <p><%= movie["title"] %></p>
+            </div>
+            <div class="movie-card-overview">
+              <p><%= movie["overview"][0, 120] %>...</p>
+            </div>
+            <% bookmark =  @list.bookmarks.where("movie_id =?", movie.id).first %>
+            <%= link_to "Delete movie",
+              bookmark_path(bookmark),
+              :class => "btn btn-secondary",
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+            %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<%= link_to "Add a movie", new_list_bookmark_path(@list), :class => "btn btn-secondary"%>
+
+
+<%# #<Bookmark::ActiveRecord_Associations_CollectionProxy:0x00007f801c00cb90> %>
