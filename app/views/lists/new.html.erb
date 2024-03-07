@@ -1,4 +1,11 @@
-<%= simple_form_for(@list) do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
-<% end %>
+<div class="container my-3 mx-auto d-flex flex-column align-items-center">
+  <h3>Add a watchlist</h3>
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs p-3 border">
+      <%= f.input :name, :label => 'Give a name to the watchlist' %>
+      <%= f.submit :class => "btn btn-secondary" %>
+    </div>
+  <% end %>
+
+</div>
