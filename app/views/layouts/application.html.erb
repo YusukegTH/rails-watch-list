@@ -11,12 +11,14 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-light rounded ">
-    <div class="nav_button">
-      <%= link_to "My watchlists", lists_path %>
-      <%= link_to "New list", new_list_path %>
+   <div class="navbar p-0 w-100 bg-white bg-opacity-25 mx-auto border-bottom border-3 d-flex justify-content-between align-items-stretch">
+      <%= link_to lists_path, :class => "text-decoration-none text-white" do %>
+        <div class="p-3 border-end rounded d-flex align-items-center justify-content-center">My watchlists</div>
+      <% end %>
+      <%= link_to new_list_path, :class => "text-decoration-none text-white" do %>
+        <div class="p-3 border-start rounded d-flex align-items-center justify-content-center">New watchlist</div>
+      <% end %>
     </div>
-  </nav>
     <%= yield %>
   </body>
 </html>

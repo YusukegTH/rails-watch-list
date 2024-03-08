@@ -1,8 +1,8 @@
-<div class="container my-3 mx-auto d-flex flex-column align-items-center">  <h3>My watchlists</h3>
+<div class="container my-3 mx-auto d-flex flex-column align-items-center text-white">  <h3>My watchlists</h3>
   <div class="row w-100 d-flex justify-content-center">
     <% @lists.each do |list| %>
       <div class="col-4 p-3 text-center">
-          <div class="list-card">
+          <div class="list-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key%>')">
             <%= link_to list_path(list), :class => "list-card-name" do%>
               <p class=""> <%= list.name %> </p>
             <%end%>
@@ -13,7 +13,7 @@
 </div>
 
 
-<div class="container my-3 mx-auto d-flex flex-column align-items-center">
+<div class="container my-3 mx-auto d-flex flex-column align-items-center text-white">
   <h3>Movies</h3>
   <div class="row w-100 d-flex align-items-center">
     <% @movies.each do |movie| %>
@@ -26,6 +26,9 @@
             </div>
             <div class="movie-card-overview">
               <p><%= movie["overview"][0, 120] %>...</p>
+            </div>
+            <div class="movie-card-rating text-end">
+              <p><b>Rating:</b> <i><%= movie["rating"] %> / 10 </i></p>
             </div>
           </div>
         </div>

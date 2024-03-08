@@ -1,5 +1,10 @@
-<%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.input :comment %>
-  <%= f.association :movie %>
-  <%= f.submit %>
-<% end %>
+<div class="container my-3 mx-auto d-flex flex-column align-items-center text-white">
+  <h3>Add a movie to "<%= @list.name %>"</h3>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :comment, :label => "Add a comment to the movie" %>
+    <%= f.association :movie, :label => "Which movie would you like to add ?" %>
+    <%= f.submit %>
+  <% end %>
+
+</div>

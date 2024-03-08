@@ -1,5 +1,11 @@
 <div class="container my-3 mx-auto d-flex flex-column align-items-center">
-  <h3> <%= @list.name %> </h3>
+  <div class="row w-100 d-flex justify-content-center">
+    <div class="col-4 p-3 text-center">
+        <div class="list-card-static" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key%>')">
+          <p class="list-card-name"> <%= @list.name %> </p>
+        </div>
+    </div>
+  </div>
   <div class="row w-100 d-flex align-items-center">
     <% @list.movies.each do |movie| %>
       <div class="col-3 p-3">
@@ -12,6 +18,9 @@
             <div class="movie-card-overview">
               <p><%= movie["overview"][0, 120] %>...</p>
             </div>
+            <div class="movie-card-rating text-end">
+              <p><b>Rating:</b> <i><%= movie["rating"] %> / 10 </i></p>
+            </div>
             <% bookmark =  @list.bookmarks.where("movie_id =?", movie.id).first %>
             <%= link_to "Delete movie",
               bookmark_path(bookmark),
@@ -23,9 +32,11 @@
       </div>
     <%end%>
   </div>
+  <%= link_to "Add a movie", new_list_bookmark_path(@list), :class => "btn btn-secondary"%>
 </div>
 
-<%= link_to "Add a movie", new_list_bookmark_path(@list), :class => "btn btn-secondary"%>
+
+
 
 
 <%# #<Bookmark::ActiveRecord_Associations_CollectionProxy:0x00007f801c00cb90> %>
